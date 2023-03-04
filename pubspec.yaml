@@ -1,0 +1,39 @@
+name: daraz_clone_app
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.5
+  flutter: 
+    sdk: flutter
+  flutter_screenutil: ^5.6.1
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  # To add assets the application
+  assets:
+    - assets/images/
+    - assets/icons/
+
+  # To add fonts 
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+    - family: Helvetica
+      fonts: 
+        - asset:  assets/fonts/Helvetica.ttf
+    - family: Helvetica Neue 
+      fonts: 
+        - asset:  assets/fonts/Helvetica-Neue-Regular.otf
+  
