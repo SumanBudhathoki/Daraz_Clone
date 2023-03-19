@@ -7,12 +7,14 @@ import 'package:daraz_clone_app/app/widgets/text_button_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-
-import '../../../routes/app_pages.dart';
 import '../controllers/onboarding_controller.dart';
 
 class OnboardingView extends GetView<OnboardingController> {
-  const OnboardingView({Key? key}) : super(key: key);
+  OnboardingView({Key? key}) : super(key: key);
+
+  @override
+  final controller = Get.put(OnboardingController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,11 +58,7 @@ class OnboardingView extends GetView<OnboardingController> {
                           ),
                         ),
                         TextButtonWidget(
-                          onPress: () async {
-                            controller
-                                .completeOnboarding(); //This function will only call onboarding screen once when the app is installed
-                            Get.offAllNamed(Routes.HOME);  
-                          },
+                          onPress: () => controller.skipTextButton(),
                           text: controller.selectedIndex.value ==
                                   4 //When the Page view is at last
                               ? "Start Shopping >".toUpperCase()
