@@ -1,36 +1,47 @@
-import 'dart:math';
-
 import 'package:daraz_clone_app/app/modules/home/views/home_view.dart';
 import 'package:daraz_clone_app/app/modules/login/views/login_view.dart';
 import 'package:daraz_clone_app/app/modules/login/views/otp_view.dart';
 import 'package:daraz_clone_app/app/utils/color_manager.dart';
+import 'package:daraz_clone_app/app/widgets/custom_loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginController extends GetxController {
   RxBool obscureText = false.obs;
   RxBool loading = false.obs;
 
-  // final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-
   final phoneNumberController = TextEditingController();
   final otpController = TextEditingController();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  late GoogleSignIn googleSignin;
 
   @override
   void onInit() {
+    // TODO: implement onInit
     super.onInit();
   }
 
+  @override
+  void onReady() async {
+    googleSignin = GoogleSignIn();
+    // _auth.authStateChanges().listen((event) {
+    //   print(event);
+    // });
+    // TODO: implement onReady
+    super.onReady();
+  }
+
+  // For password field
   void changeObscureValue() {
     obscureText.value = !obscureText.value;
   }
 
+  // Phone number verification for login
   Future<void> verifyPhoneNumber() async {
     loading.value = true;
-    // if (loginFormKey.currentState!.validate()) {
     try {
       await _auth.verifyPhoneNumber(
         phoneNumber: "+977 ${phoneNumberController.text}",
@@ -78,9 +89,9 @@ class LoginController extends GetxController {
         duration: const Duration(seconds: 5),
       );
     }
-    // }
   }
 
+  // Otp Verification and login
   Future<void> signInWithPhoneNumber(String verificationId) async {
     loading.value = true;
     try {
@@ -90,6 +101,10 @@ class LoginController extends GetxController {
       );
       await _auth.signInWithCredential(credential);
       Get.offAll(() => HomeView());
+      Get.snackbar(
+        'Success',
+        'Logged in successfully',
+      );
     } catch (e) {
       loading.value = false;
       Get.snackbar(
@@ -101,9 +116,12 @@ class LoginController extends GetxController {
     //  loading.value = false;
   }
 
+  // Logout
   Future<void> signOut() async {
+    await googleSignin.disconnect();
     await _auth.signOut();
-    Get.off(() => const LoginView());
+
+    Get.offAll(() => const LoginView());
   }
 
   String? validatePhone(String value) {
@@ -118,6 +136,24 @@ class LoginController extends GetxController {
       return 'Please enter a valid phone number';
     }
     return null;
+  }
+
+  // Sign in with google
+  void googleLogin() async {
+    CustomFullScreenDialog.showDialog();
+    GoogleSignInAccount? googleSignInAccount = await googleSignin.signIn();
+    if (googleSignin == null) {
+      CustomFullScreenDialog.cancelDialog();
+    } else {
+      GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount!.authentication;
+      OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken);
+      await _auth.signInWithCredential(oAuthCredential);
+      CustomFullScreenDialog.cancelDialog();
+      
+    }
   }
 
   @override

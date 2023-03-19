@@ -157,25 +157,30 @@ class LoginView extends GetView<LoginController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  ImageAssets.fbLogo,
-                  width: 40.w,
+                GestureDetector(
+                  child: Image.asset(
+                    ImageAssets.fbLogo,
+                    width: 40.w,
+                  ),
                 ),
                 SizedBox(
                   width: 30.w,
                 ),
-                Container(
-                    padding: const EdgeInsets.all(10),
-                    width: 40.w,
-                    // height: 50.w,
-                    decoration: BoxDecoration(
-                        color: ColorManager.primaryWhite,
-                        borderRadius: BorderRadius.circular(50)),
-                    child: const Image(
-                      image: AssetImage(
-                        ImageAssets.googleLogo,
-                      ),
-                    )),
+                GestureDetector(
+                  onTap: () => controller.googleLogin(),
+                  child: Container(
+                      padding: const EdgeInsets.all(10),
+                      width: 40.w,
+                      // height: 50.w,
+                      decoration: BoxDecoration(
+                          color: ColorManager.primaryWhite,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: const Image(
+                        image: AssetImage(
+                          ImageAssets.googleLogo,
+                        ),
+                      )),
+                ),
               ],
             ),
           ],
