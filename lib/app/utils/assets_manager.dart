@@ -1,4 +1,5 @@
 const String imagePath = 'assets/images';
+const String iconPath = 'assets/icons';
 
 class ImageAssets {
   static const String onBoarding1 = '$imagePath/banner1.png';
@@ -10,4 +11,17 @@ class ImageAssets {
   static const String nepalFlag = '$imagePath/nepal.svg';
   static const String fbLogo = '$imagePath/fb_logo.png';
   static const String googleLogo = '$imagePath/google_logo.png';
+  static const String carousel1 = '$imagePath/carousel1.jpg';
+  static const String carousel2 = '$imagePath/carousel2.jpg';
+  static const String carousel3 = '$imagePath/carousel3.jpg';
+  static const String carousel4 = '$imagePath/carousel4.jpg';
+  static const String carousel5 = '$imagePath/carousel5.jpg';
+  static const String carousel6 = '$imagePath/carousel6.jpg';
+  static const String carousel7 = '$imagePath/carousel7.jpg';
+}
+
+class IconAssets {
+  static const String gem = '$iconPath/gem.png';
+  static const String search = '$iconPath/search.png';
+  static const String scanner = '$iconPath/scanner.png';
 }

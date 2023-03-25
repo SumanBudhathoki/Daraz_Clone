@@ -13,6 +13,13 @@ TextStyle _getTextStyle(
   );
 }
 
+TextStyle smallText() {
+  return TextStyle(
+    fontSize: FontSize.s12,
+    color: ColorManager.secondaryBlack,
+  );
+}
+
 // Title Text Style
 // TextStyle getTitleStyle(
 //     {double fontSize = FontSize.s20, Color color = Colors.black}) {
