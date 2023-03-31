@@ -18,6 +18,11 @@ class ImageAssets {
   static const String carousel5 = '$imagePath/carousel5.jpg';
   static const String carousel6 = '$imagePath/carousel6.jpg';
   static const String carousel7 = '$imagePath/carousel7.jpg';
+  static const String mart = '$imagePath/mart.png';
+  static const String fashion = '$imagePath/fashion.png';
+  static const String beauty = '$imagePath/beauty.png';
+  static const String proudlyNepali = '$imagePath/proudlynepali.png';
+  static const String under499 = '$imagePath/under499.png';
 }
 
 class IconAssets {

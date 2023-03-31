@@ -11,6 +11,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class LoginController extends GetxController {
   RxBool obscureText = false.obs;
   RxBool loading = false.obs;
+  RxBool logged = false.obs;
 
   final phoneNumberController = TextEditingController();
   final otpController = TextEditingController();
@@ -20,17 +21,12 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
   }
 
   @override
   void onReady() async {
     googleSignin = GoogleSignIn();
-    // _auth.authStateChanges().listen((event) {
-    //   print(event);
-    // });
-    // TODO: implement onReady
     super.onReady();
   }
 
@@ -116,12 +112,23 @@ class LoginController extends GetxController {
     //  loading.value = false;
   }
 
+  // Check User Loggin Status
+  bool loggingStatus() {
+    if (_auth.currentUser == null) {
+      logged.value = false;
+      return false;
+    } else {
+      logged.value = true;
+      return true;
+    }
+  }
+
   // Logout
   Future<void> signOut() async {
     await googleSignin.disconnect();
     await _auth.signOut();
 
-    Get.offAll(() => const LoginView());
+    Get.offAll(() => HomeView());
   }
 
   String? validatePhone(String value) {
@@ -152,7 +159,6 @@ class LoginController extends GetxController {
           idToken: googleSignInAuthentication.idToken);
       await _auth.signInWithCredential(oAuthCredential);
       CustomFullScreenDialog.cancelDialog();
-      
     }
   }
 

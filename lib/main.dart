@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'app/modules/connectivity/bindings/connectivity_binding.dart';
 import 'app/routes/app_pages.dart';
 
 void main() async {
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
+          initialBinding: ConnectivityBinding(),
           debugShowCheckedModeBanner: false,
           title: "Daraz Clone",
           initialRoute: AppPages.INITIAL,

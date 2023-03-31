@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:daraz_clone_app/app/modules/home/controllers/home_controller.dart';
+import 'package:daraz_clone_app/app/modules/home/views/home_view.dart';
 import 'package:daraz_clone_app/app/modules/login/views/login_view_withphn.dart';
 import 'package:daraz_clone_app/app/modules/login/views/login_with_email_view.dart';
 import 'package:daraz_clone_app/app/utils/assets_manager.dart';
@@ -14,16 +18,22 @@ import '../../../utils/style_manager.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+  final HomeController _homeController = Get.find<HomeController>();
+  LoginView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: ColorManager.primaryOrange,
       appBar: AppBar(
         backgroundColor: ColorManager.primaryOrange,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            _homeController.visible.value = true;
+            _homeController.tabIndex.value = 0;
+            log("Pressing");
+          },
           icon: const Icon(Icons.close_outlined),
           iconSize: AppSize.s28,
           color: ColorManager.primaryWhite,

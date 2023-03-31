@@ -9,6 +9,10 @@ abstract class Routes {
   static const MESSAGES = _Paths.MESSAGES;
   static const ACCOUNT = _Paths.ACCOUNT;
   static const CART = _Paths.CART;
+  static const CUSTOM_SCROLL_HOME_VIEW = _Paths.CUSTOM_SCROLL_HOME_VIEW;
+  static const HOMESCREEN = _Paths.HOMESCREEN;
+  static const NO_NETWORK = _Paths.NO_NETWORK;
+  static const CONNECTIVITY = _Paths.CONNECTIVITY;
 }
 
 abstract class _Paths {
@@ -19,4 +23,8 @@ abstract class _Paths {
   static const MESSAGES = '/messages';
   static const ACCOUNT = '/account';
   static const CART = '/cart';
+  static const CUSTOM_SCROLL_HOME_VIEW = '/custom-scroll-home-view';
+  static const HOMESCREEN = '/homescreen';
+  static const NO_NETWORK = '/no-network';
+  static const CONNECTIVITY = '/connectivity';
 }
