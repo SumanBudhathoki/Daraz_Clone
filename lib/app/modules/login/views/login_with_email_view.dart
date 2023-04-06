@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../utils/font_manager.dart';
 import '../../../utils/value_manager.dart';
-import 'widget/login_view_button.dart';
+import '../../../widgets/gradient_button.dart';
 
 class LoginWithEmailView extends StatelessWidget {
   const LoginWithEmailView({Key? key}) : super(key: key);
@@ -92,7 +92,14 @@ class LoginWithEmailView extends StatelessWidget {
                   'Forgot Password?',
                   style: TextStyle(fontSize: FontSize.s12),
                 )),
-            LoginViewButton(text: 'Login', onTap: () {}),
+            GradientButton(
+              text: 'Login',
+              onTap: () {},
+              gradient: LinearGradient(
+                colors: [ColorManager.primaryOrange, Colors.orangeAccent],
+                stops: const [0.2, 2],
+              ),
+            ),
           ],
         ),
       ),

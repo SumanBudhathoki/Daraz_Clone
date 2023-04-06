@@ -35,7 +35,6 @@ class HomeView extends GetView<HomeController> {
                     loginController.logged.value
                         ? const CartView()
                         : LoginView(),
-                    // ProductsView(),
                     const AccountView()
                   ],
                 ),

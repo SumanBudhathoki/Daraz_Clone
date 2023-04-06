@@ -6,6 +6,10 @@ import '../modules/account/bindings/account_binding.dart';
 import '../modules/account/views/account_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
 import '../modules/cart/views/cart_view.dart';
+import '../modules/chat/bindings/chat_binding.dart';
+import '../modules/chat/views/chat_view.dart';
+import '../modules/checkout/bindings/checkout_binding.dart';
+import '../modules/checkout/views/checkout_view.dart';
 import '../modules/connectivity/bindings/connectivity_binding.dart';
 import '../modules/connectivity/views/connectivity_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -22,6 +26,8 @@ import '../modules/product_page/bindings/product_page_binding.dart';
 import '../modules/product_page/views/product_page_view.dart';
 import '../modules/products/bindings/products_binding.dart';
 import '../modules/products/views/products_view.dart';
+import '../modules/shop/bindings/shop_binding.dart';
+import '../modules/shop/views/shop_view.dart';
 
 part 'app_routes.dart';
 
@@ -79,8 +85,23 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PRODUCT_PAGE,
-      page: () => const ProductPageView(),
+      page: () => ProductPageView(id: 0),
       binding: ProductPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.SHOP,
+      page: () => const ShopView(),
+      binding: ShopBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHAT,
+      page: () => const ChatView(),
+      binding: ChatBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHECKOUT,
+      page: () => const CheckoutView(),
+      binding: CheckoutBinding(),
     ),
   ];
 }

@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import '../../../utils/color_manager.dart';
 import '../../../utils/font_manager.dart';
 import '../../../utils/value_manager.dart';
-import 'widget/login_view_button.dart';
+import '../../../widgets/gradient_button.dart';
 
 class OtpView extends StatelessWidget {
   OtpView({Key? key}) : super(key: key);
@@ -62,12 +62,16 @@ class OtpView extends StatelessWidget {
                   'Resend Code',
                   style: TextStyle(fontSize: FontSize.s12),
                 )),
-            LoginViewButton(
+            GradientButton(
               text: 'Next',
               onTap: () async {
                 await loginController.signInWithPhoneNumber(verificationId);
                 Get.offAllNamed("/");
               },
+              gradient: LinearGradient(
+                colors: [ColorManager.primaryOrange, Colors.orangeAccent],
+                stops: const [0.2, 2],
+              ),
             ),
           ],
         ),

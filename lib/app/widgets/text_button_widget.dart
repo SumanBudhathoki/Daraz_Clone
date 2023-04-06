@@ -1,4 +1,3 @@
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
 import 'package:daraz_clone_app/app/utils/font_manager.dart';
 import 'package:daraz_clone_app/app/utils/style_manager.dart';
 import 'package:flutter/material.dart';

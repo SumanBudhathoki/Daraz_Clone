@@ -164,8 +164,6 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {
-    phoneNumberController.dispose();
-    otpController.dispose();
     super.onClose();
   }
 }

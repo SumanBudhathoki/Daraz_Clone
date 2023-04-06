@@ -3,14 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../utils/color_manager.dart';
-import '../../../../utils/font_manager.dart';
+import '../utils/color_manager.dart';
+import '../utils/font_manager.dart';
 
-class LoginViewButton extends StatelessWidget {
+class GradientButton extends StatelessWidget {
   final LoginController controller = Get.put(LoginController());
   final String text;
+  double? width = Get.width;
+  double? height = 55.h;
   final VoidCallback onTap;
-  LoginViewButton({super.key, required this.text, required this.onTap});
+  final Gradient gradient;
+  GradientButton(
+      {super.key,
+      required this.text,
+      required this.onTap,
+      required this.gradient,
+      this.width,
+      this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +27,11 @@ class LoginViewButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 40),
-        width: Get.width,
-        height: 55.h,
+        width: width,
+        height: height,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [ColorManager.primaryOrange, Colors.orangeAccent],
-            stops: const [0.2, 2],
-          ),
-          borderRadius: BorderRadius.circular(10),
+          gradient: gradient,
+          borderRadius: BorderRadius.circular(6),
         ),
         padding: const EdgeInsets.all(12.0),
         child: Obx(() {

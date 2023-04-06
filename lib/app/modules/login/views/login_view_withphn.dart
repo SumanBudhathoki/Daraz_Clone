@@ -1,6 +1,4 @@
-import 'dart:math';
-
-import 'package:daraz_clone_app/app/modules/login/views/widget/login_view_button.dart';
+import 'package:daraz_clone_app/app/widgets/gradient_button.dart';
 import 'package:daraz_clone_app/app/utils/color_manager.dart';
 import 'package:daraz_clone_app/app/utils/font_manager.dart';
 import 'package:daraz_clone_app/app/utils/value_manager.dart';
@@ -85,11 +83,15 @@ class LoginViewWithPhn extends StatelessWidget {
                 },
               ),
               const Spacer(),
-              LoginViewButton(
+              GradientButton(
                 text: 'Next',
                 onTap: () {
                   controller.verifyPhoneNumber();
                 },
+                gradient: LinearGradient(
+                  colors: [ColorManager.primaryOrange, Colors.orangeAccent],
+                  stops: const [0.2, 2],
+                ),
               ),
             ],
           ),
