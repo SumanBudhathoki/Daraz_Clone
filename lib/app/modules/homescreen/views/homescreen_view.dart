@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daraz_clone_app/app/modules/homescreen/views/widgets/category.dart';
 import 'package:daraz_clone_app/app/modules/login/controllers/login_controller.dart';
+import 'package:daraz_clone_app/app/modules/products/views/products_view.dart';
 import 'package:daraz_clone_app/app/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -91,24 +92,26 @@ class HomescreenView extends GetView<HomescreenController> {
             ],
           ),
         ),
-        // const SliverToBoxAdapter(
-        //   child: SizedBox(
-        //     height: 5,
-        //   ),
-        // ),
         _buildCarousel(),
         _setLocation(),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 25.h,
-          ),
-        ),
+        _buildSizedBox(25.0.h),
         _category(),
-        Images(),
+        _forYouProducts(),
+        // Images(),
       ],
     );
   }
 
+  // Reusable Sized Box
+  Widget _buildSizedBox(height) {
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: height,
+      ),
+    );
+  }
+
+  // Carousel Slider
   Widget _buildCarousel() {
     return SliverToBoxAdapter(
       child: CarouselSlider.builder(
@@ -152,6 +155,7 @@ class HomescreenView extends GetView<HomescreenController> {
     );
   }
 
+  // Main Category
   Widget _category() {
     return SliverToBoxAdapter(
       child: Row(
@@ -187,6 +191,7 @@ class HomescreenView extends GetView<HomescreenController> {
     );
   }
 
+  // Set Location area in homepage
   Widget _setLocation() {
     return SliverToBoxAdapter(
       child: Container(
@@ -218,6 +223,12 @@ class HomescreenView extends GetView<HomescreenController> {
       ),
     );
   }
+}
+
+Widget _forYouProducts() {
+  return SliverToBoxAdapter(
+    child: ProductsView(),
+  );
 }
 
 // For dot in the carousel slider

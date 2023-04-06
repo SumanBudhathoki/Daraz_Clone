@@ -54,6 +54,13 @@ TextStyle getProductSubtitle(
       fontSize, FontConstants.fontFamily, FontWeight.w400, color);
 }
 
+// Product Price
+TextStyle getProductPriceStyle(
+    {double fontSize = 12, Color color = Colors.orange}) {
+  return _getTextStyle(
+      fontSize, FontConstants.fontFamily, FontWeight.w600, color);
+}
+
 // Login Screen Text
 TextStyle getLoginSubtitle({
   double fontSize = 12,

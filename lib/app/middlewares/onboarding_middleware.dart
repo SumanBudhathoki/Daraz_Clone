@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 // first time open
 class OnboardingMiddleware extends GetMiddleware {
   @override
+  // ignore: overridden_fields
   int? priority = 0;
 
   OnboardingMiddleware({required this.priority});

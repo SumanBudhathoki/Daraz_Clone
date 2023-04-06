@@ -7,6 +7,7 @@ import 'package:daraz_clone_app/app/modules/homescreen/views/homescreen_view.dar
 import 'package:daraz_clone_app/app/modules/login/controllers/login_controller.dart';
 import 'package:daraz_clone_app/app/modules/login/views/login_view.dart';
 import 'package:daraz_clone_app/app/modules/messages/views/messages_view.dart';
+import 'package:daraz_clone_app/app/modules/products/views/products_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../utils/color_manager.dart';
@@ -30,33 +31,12 @@ class HomeView extends GetView<HomeController> {
                     HomescreenView(),
                     loginController.loggingStatus() == true
                         ? const MessagesView()
-                        : Navigator(
-                            onGenerateRoute: (settings) {
-                              return PageRouteBuilder(
-                                transitionDuration:
-                                    const Duration(milliseconds: 500),
-                                pageBuilder:
-                                    (context, animation, secondaryAnimation) =>
-                                        LoginView(),
-                                transitionsBuilder: (context, animation,
-                                    secondaryAnimation, child) {
-                                  var begin = Offset(1.0, 0.0);
-                                  var end = Offset.zero;
-                                  var curve = Curves.ease;
-                                  var tween = Tween(begin: begin, end: end)
-                                      .chain(CurveTween(curve: curve));
-                                  return SlideTransition(
-                                    position: animation.drive(tween),
-                                    child: child,
-                                  );
-                                },
-                              );
-                            },
-                          ),
+                        : LoginView(),
                     loginController.logged.value
                         ? const CartView()
                         : LoginView(),
-                    const AccountView(),
+                    // ProductsView(),
+                    const AccountView()
                   ],
                 ),
           bottomNavigationBar: Obx(() {

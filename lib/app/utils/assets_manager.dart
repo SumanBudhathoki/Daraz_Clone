@@ -23,6 +23,8 @@ class ImageAssets {
   static const String beauty = '$imagePath/beauty.png';
   static const String proudlyNepali = '$imagePath/proudlynepali.png';
   static const String under499 = '$imagePath/under499.png';
+  static const String bag = '$imagePath/bag.jpg';
+  static const String shoes = '$imagePath/shoes.jpg';
 }
 
 class IconAssets {

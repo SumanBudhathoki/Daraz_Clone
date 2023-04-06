@@ -7,6 +7,7 @@ class AuthMiddleware extends GetMiddleware {
   late FirebaseAuth _firebaseAuth;
 
   @override
+  // ignore: overridden_fields
   int? priority = 0;
 
   AuthMiddleware({required this.priority}) {

@@ -14,6 +14,7 @@ class ConnectivityController extends GetxController {
   late StreamSubscription _streamSubscription;
   @override
   void onInit() {
+    super.onInit();
     getConnectionType();
     _streamSubscription =
         _connectivity.onConnectivityChanged.listen(_updateState);

@@ -18,6 +18,10 @@ import '../modules/messages/bindings/messages_binding.dart';
 import '../modules/messages/views/messages_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
+import '../modules/product_page/bindings/product_page_binding.dart';
+import '../modules/product_page/views/product_page_view.dart';
+import '../modules/products/bindings/products_binding.dart';
+import '../modules/products/views/products_view.dart';
 
 part 'app_routes.dart';
 
@@ -43,10 +47,11 @@ class AppPages {
       binding: LoginBinding(),
     ),
     GetPage(
-        name: _Paths.MESSAGES,
-        page: () => const MessagesView(),
-        binding: MessagesBinding(),
-        middlewares: [AuthMiddleware(priority: 1)]),
+      name: _Paths.MESSAGES,
+      page: () => const MessagesView(),
+      binding: MessagesBinding(),
+      middlewares: [AuthMiddleware(priority: 1)],
+    ),
     GetPage(
       name: _Paths.ACCOUNT,
       page: () => const AccountView(),
@@ -66,6 +71,16 @@ class AppPages {
       name: _Paths.CONNECTIVITY,
       page: () => const ConnectivityView(),
       binding: ConnectivityBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCTS,
+      page: () => ProductsView(),
+      binding: ProductsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_PAGE,
+      page: () => const ProductPageView(),
+      binding: ProductPageBinding(),
     ),
   ];
 }

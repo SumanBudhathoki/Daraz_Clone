@@ -13,6 +13,9 @@ abstract class Routes {
   static const HOMESCREEN = _Paths.HOMESCREEN;
   static const NO_NETWORK = _Paths.NO_NETWORK;
   static const CONNECTIVITY = _Paths.CONNECTIVITY;
+  static const PRODUCT = _Paths.PRODUCT;
+  static const PRODUCTS = _Paths.PRODUCTS;
+  static const PRODUCT_PAGE = _Paths.PRODUCT_PAGE;
 }
 
 abstract class _Paths {
@@ -27,4 +30,7 @@ abstract class _Paths {
   static const HOMESCREEN = '/homescreen';
   static const NO_NETWORK = '/no-network';
   static const CONNECTIVITY = '/connectivity';
+  static const PRODUCT = '/product';
+  static const PRODUCTS = '/products';
+  static const PRODUCT_PAGE = '/product-page';
 }

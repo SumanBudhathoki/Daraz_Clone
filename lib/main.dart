@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           title: "Daraz Clone",
           initialRoute: AppPages.INITIAL,
           getPages: AppPages.routes,
-        );
+        ); 
       },
     );
   }
