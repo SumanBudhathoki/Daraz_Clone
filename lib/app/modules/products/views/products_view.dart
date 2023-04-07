@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:daraz_clone_app/app/data/models/products.dart';
 import 'package:daraz_clone_app/app/modules/product_page/views/product_page_view.dart';
 import 'package:daraz_clone_app/app/modules/products/views/widgets/single_product.dart';
@@ -48,9 +50,11 @@ class ProductsView extends GetView<ProductsController> {
                       ratingCount: controller.productList[index]["rating"]
                           ["count"],
                       onTap: () {
-                        Get.to(() => ProductPageView(
-                              id: controller.productList[index]["id"],
-                            ));
+                        log("${controller.productList[index]}");
+                        Get.to(
+                          () => ProductPageView(),
+                          arguments: {"product": controller.productList[index]},
+                        );
                       },
                     );
                   })),

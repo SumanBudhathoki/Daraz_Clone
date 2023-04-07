@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../data/models/products.dart';
 import '../middlewares/auth_middleware.dart';
 import '../middlewares/onboarding_middleware.dart';
 import '../modules/account/bindings/account_binding.dart';
@@ -85,7 +86,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PRODUCT_PAGE,
-      page: () => ProductPageView(id: 0),
+      page: () => ProductPageView(),
       binding: ProductPageBinding(),
     ),
     GetPage(

@@ -1,26 +1,21 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:daraz_clone_app/app/modules/products/controllers/products_controller.dart';
 import 'package:daraz_clone_app/app/utils/assets_manager.dart';
 import 'package:daraz_clone_app/app/utils/color_manager.dart';
 import 'package:daraz_clone_app/app/utils/font_manager.dart';
-import 'package:daraz_clone_app/app/widgets/gradient_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
-
 import '../../../utils/style_manager.dart';
 import '../controllers/product_page_controller.dart';
 
 class ProductPageView extends GetView<ProductPageController> {
-  final int id;
-  final productController = Get.put(ProductsController());
-  final productPageController = Get.put(ProductPageController());
-  ProductPageView({Key? key, required this.id}) : super(key: key);
+  ProductPageView({Key? key}) : super(key: key);
+  @override
+  final controller = Get.put(ProductPageController());
+
   @override
   Widget build(BuildContext context) {
+    // log(controller.product);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorManager.primaryWhite,
@@ -125,8 +120,8 @@ class ProductPageView extends GetView<ProductPageController> {
                 Container(
                   width: Get.width,
                   height: 400.h,
-                  child: CachedNetworkImage(
-                      imageUrl: productController.productList[id - 1]['image']),
+                  child:
+                      CachedNetworkImage(imageUrl: controller.product!.image!),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -138,8 +133,7 @@ class ProductPageView extends GetView<ProductPageController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              // "Box Cargo Pants for Men",
-                              productController.productList[id - 1]['title'],
+                                                            controller.product!.title!,
                               style:
                                   getProductTitleStyle(fontSize: FontSize.s18),
                             ),
@@ -153,9 +147,10 @@ class ProductPageView extends GetView<ProductPageController> {
                                       fontWeight: FontWeight.bold),
                                   children: [
                                     TextSpan(
-                                      // text: "2,000\t\t",
+                                    
                                       text:
-                                          "${productController.productList[id - 1]["price"]}\t\t",
+                                         
+                                          "${controller.product!.price}\t\t",
                                       style: TextStyle(
                                           color: Colors.black87,
                                           fontSize: FontSize.s24,
@@ -163,7 +158,8 @@ class ProductPageView extends GetView<ProductPageController> {
                                     ),
                                     TextSpan(
                                       text:
-                                          "Rs ${productController.productList[id - 1]["price"] + 92}",
+                                         
+                                          "Rs ${controller.product!.price! + 92}",
                                       style: TextStyle(
                                           color: ColorManager.primaryGrey,
                                           fontSize: FontSize.s14,
@@ -225,7 +221,7 @@ class ProductPageView extends GetView<ProductPageController> {
                                     size: 20,
                                   ),
                                   Text(
-                                    "${productController.productList[id - 1]['rating']['rate']}/5(${productController.productList[id - 1]['rating']['count']})\t",
+                                    "${controller.product!.rating!.rate}/5(${controller.product!.rating!.count})\t",
                                     style: TextStyle(fontSize: FontSize.s16),
                                   ),
                                   Icon(
