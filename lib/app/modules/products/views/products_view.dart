@@ -1,16 +1,10 @@
-import 'dart:developer';
-
-import 'package:daraz_clone_app/app/data/models/products.dart';
 import 'package:daraz_clone_app/app/modules/product_page/views/product_page_view.dart';
 import 'package:daraz_clone_app/app/modules/products/views/widgets/single_product.dart';
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
 import 'package:daraz_clone_app/app/utils/font_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
-
 import '../../../utils/style_manager.dart';
 import '../controllers/products_controller.dart';
 
@@ -50,7 +44,6 @@ class ProductsView extends GetView<ProductsController> {
                       ratingCount: controller.productList[index]["rating"]
                           ["count"],
                       onTap: () {
-                        log("${controller.productList[index]}");
                         Get.to(
                           () => ProductPageView(),
                           arguments: {"product": controller.productList[index]},

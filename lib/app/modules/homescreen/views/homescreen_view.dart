@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daraz_clone_app/app/modules/homescreen/views/widgets/category.dart';
+import 'package:daraz_clone_app/app/modules/homescreen/views/widgets/dot_indicator.dart';
 import 'package:daraz_clone_app/app/modules/login/controllers/login_controller.dart';
 import 'package:daraz_clone_app/app/modules/products/views/products_view.dart';
 import 'package:daraz_clone_app/app/utils/color_manager.dart';
@@ -114,17 +115,32 @@ class HomescreenView extends GetView<HomescreenController> {
   // Carousel Slider
   Widget _buildCarousel() {
     return SliverToBoxAdapter(
-      child: CarouselSlider.builder(
-        itemCount: controller.images.length,
-        itemBuilder: (context, index, realIndex) {
-          return Stack(
-            children: [
-              ClipRRect(
+      child: Stack(
+        children: [
+          CarouselSlider.builder(
+            itemCount: controller.images.length,
+            itemBuilder: (context, index, realIndex) {
+              return ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: controller.images[index],
-              ),
-              Positioned(
-                bottom: 25.h,
+              );
+            },
+            options: CarouselOptions(
+              height: 150.h,
+              enlargeCenterPage: true,
+              autoPlay: true,
+              aspectRatio: 4 / 3,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
+              viewportFraction: 0.94,
+              onPageChanged: (int page, CarouselPageChangedReason reason) {
+                controller.currentPage.value = page;
+              },
+            ),
+          ),
+          Obx(() => Positioned(
+                bottom: 15.h,
                 left: 0,
                 right: 0,
                 child: DotIndicator(
@@ -134,23 +150,8 @@ class HomescreenView extends GetView<HomescreenController> {
                   inactiveColor: ColorManager.primaryGrey,
                   spacing: 8,
                 ),
-              )
-            ],
-          );
-        },
-        options: CarouselOptions(
-          height: 150.h,
-          enlargeCenterPage: true,
-          autoPlay: true,
-          aspectRatio: 4 / 3,
-          autoPlayCurve: Curves.fastOutSlowIn,
-          enableInfiniteScroll: true,
-          autoPlayAnimationDuration: const Duration(milliseconds: 800),
-          viewportFraction: 0.94,
-          onPageChanged: (int page, CarouselPageChangedReason reason) {
-            controller.currentPage.value = page;
-          },
-        ),
+              ))
+        ],
       ),
     );
   }
@@ -229,44 +230,6 @@ Widget _forYouProducts() {
   return SliverToBoxAdapter(
     child: ProductsView(),
   );
-}
-
-// For dot in the carousel slider
-class DotIndicator extends StatelessWidget {
-  final int itemCount;
-  final int currentIndex;
-  final Color activeColor;
-  final Color inactiveColor;
-  final double spacing;
-
-  DotIndicator({
-    required this.itemCount,
-    required this.currentIndex,
-    this.activeColor = Colors.black,
-    this.inactiveColor = Colors.grey,
-    this.spacing = 8,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        itemCount,
-        (index) => Padding(
-          padding: EdgeInsets.symmetric(horizontal: spacing / 2),
-          child: Container(
-            width: currentIndex == index ? 30 : 6,
-            height: 6,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              color: currentIndex == index ? activeColor : inactiveColor,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 class Images extends StatelessWidget {

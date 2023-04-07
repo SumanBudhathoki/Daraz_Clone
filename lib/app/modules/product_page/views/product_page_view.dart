@@ -15,7 +15,6 @@ class ProductPageView extends GetView<ProductPageController> {
 
   @override
   Widget build(BuildContext context) {
-    // log(controller.product);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorManager.primaryWhite,
@@ -117,7 +116,7 @@ class ProductPageView extends GetView<ProductPageController> {
           children: [
             ListView(
               children: [
-                Container(
+                SizedBox(
                   width: Get.width,
                   height: 400.h,
                   child:
@@ -133,7 +132,7 @@ class ProductPageView extends GetView<ProductPageController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                                                            controller.product!.title!,
+                              controller.product!.title!,
                               style:
                                   getProductTitleStyle(fontSize: FontSize.s18),
                             ),
@@ -147,10 +146,7 @@ class ProductPageView extends GetView<ProductPageController> {
                                       fontWeight: FontWeight.bold),
                                   children: [
                                     TextSpan(
-                                    
-                                      text:
-                                         
-                                          "${controller.product!.price}\t\t",
+                                      text: "${controller.product!.price}\t\t",
                                       style: TextStyle(
                                           color: Colors.black87,
                                           fontSize: FontSize.s24,
@@ -158,7 +154,6 @@ class ProductPageView extends GetView<ProductPageController> {
                                     ),
                                     TextSpan(
                                       text:
-                                         
                                           "Rs ${controller.product!.price! + 92}",
                                       style: TextStyle(
                                           color: ColorManager.primaryGrey,
@@ -311,15 +306,85 @@ class ProductPageView extends GetView<ProductPageController> {
                               endIndent: 10,
                               height: 2,
                             ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 8),
+                              decoration: BoxDecoration(
+                                  // color: Colors.grey.shade100,
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Row(children: [
+                                Icon(
+                                  Icons.store_mall_directory,
+                                  color: ColorManager.primaryOrange,
+                                  size: 20,
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                Flexible(
+                                  child: Text(
+                                    "Fashion Wear ",
+                                    maxLines: 1,
+                                    style: getProductPriceStyle(
+                                            fontSize: FontSize.s16,
+                                            color: ColorManager.secondaryBlack)
+                                        .copyWith(
+                                      fontWeight: FontWeight.normal,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ),
+                                const Spacer(),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.grey.withAlpha(20)),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 8),
+                                  child: const Text("85% Positive Review"),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_outlined,
+                                  color: ColorManager.secondaryBlack,
+                                  size: 20,
+                                ),
+                              ]),
+                            ),
                           ]),
                     ),
                   ),
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Description',
+                            style: getProductTitleStyle(
+                              fontSize: FontSize.s16,
+                            ).copyWith(color: ColorManager.primaryGrey),
+                          ),
+                          const Divider(),
+                          Text(
+                            controller.product!.description!,
+                            style: TextStyle(fontSize: FontSize.s14),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
         ),
       ),
+
+      // ButtomNavigation bar of the product description page.
       persistentFooterButtons: [
         Container(
           height: 50,
