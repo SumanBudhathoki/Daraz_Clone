@@ -19,6 +19,7 @@ abstract class Routes {
   static const SHOP = _Paths.SHOP;
   static const CHAT = _Paths.CHAT;
   static const CHECKOUT = _Paths.CHECKOUT;
+  static const LOGGED_ACCOUNT = _Paths.LOGGED_ACCOUNT;
 }
 
 abstract class _Paths {
@@ -39,4 +40,5 @@ abstract class _Paths {
   static const SHOP = '/shop';
   static const CHAT = '/chat';
   static const CHECKOUT = '/checkout';
+  static const LOGGED_ACCOUNT = '/logged-account';
 }

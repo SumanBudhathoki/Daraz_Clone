@@ -25,10 +25,13 @@ class ImageAssets {
   static const String under499 = '$imagePath/under499.png';
   static const String bag = '$imagePath/bag.jpg';
   static const String shoes = '$imagePath/shoes.jpg';
+  static const String discount = '$imagePath/daraz_voucher.png';
+  static const String landscape = '$imagePath/landscape.png';
 }
 
 class IconAssets {
   static const String gem = '$iconPath/gem.png';
   static const String search = '$iconPath/search.png';
   static const String scanner = '$iconPath/scanner.png';
+  static const String settings = '$iconPath/settings.png';
 }

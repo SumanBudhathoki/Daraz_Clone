@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-
-import '../data/models/products.dart';
 import '../middlewares/auth_middleware.dart';
 import '../middlewares/onboarding_middleware.dart';
 import '../modules/account/bindings/account_binding.dart';
