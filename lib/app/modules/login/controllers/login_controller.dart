@@ -1,7 +1,7 @@
+import 'package:daraz_clone_app/app/data/providers/auth_api.dart';
 import 'package:daraz_clone_app/app/modules/home/views/home_view.dart';
-import 'package:daraz_clone_app/app/modules/login/views/login_view.dart';
 import 'package:daraz_clone_app/app/modules/login/views/otp_view.dart';
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/color_manager.dart';
 import 'package:daraz_clone_app/app/widgets/custom_loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +12,19 @@ class LoginController extends GetxController {
   RxBool obscureText = false.obs;
   RxBool loading = false.obs;
   RxBool logged = false.obs;
+  String? token;
 
+  // phone number login
   final phoneNumberController = TextEditingController();
   final otpController = TextEditingController();
 
+  // google login
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  late GoogleSignIn googleSignin;
+  late GoogleSignIn? googleSignin;
+
+  // username login
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   void onInit() {
@@ -125,9 +132,8 @@ class LoginController extends GetxController {
 
   // Logout
   Future<void> signOut() async {
-    await googleSignin.disconnect();
     await _auth.signOut();
-
+    await googleSignin!.disconnect();
     Get.offAll(() => HomeView());
   }
 
@@ -148,7 +154,7 @@ class LoginController extends GetxController {
   // Sign in with google
   void googleLogin() async {
     CustomFullScreenDialog.showDialog();
-    GoogleSignInAccount? googleSignInAccount = await googleSignin.signIn();
+    GoogleSignInAccount? googleSignInAccount = await googleSignin!.signIn();
     if (googleSignin == null) {
       CustomFullScreenDialog.cancelDialog();
     } else {
@@ -160,6 +166,24 @@ class LoginController extends GetxController {
       await _auth.signInWithCredential(oAuthCredential);
       CustomFullScreenDialog.cancelDialog();
     }
+  }
+
+  // Login with username
+  usernameLogin({required String username, required String password}) async {
+    loading.value = true;
+    var response =
+        await AuthApi().loginWithEmail(username: username, password: password);
+    if (response == null) {
+    } else if (response == false) {
+    } else {
+      token = response['token'];
+
+      Get.snackbar(
+        'Success',
+        'Logged in successfully with username',
+      );
+    }
+    loading.value = false;
   }
 
   @override

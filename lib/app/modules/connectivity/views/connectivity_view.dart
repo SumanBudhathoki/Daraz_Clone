@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import '../controllers/connectivity_controller.dart';
 
 class ConnectivityView extends GetView<ConnectivityController> {
-  const ConnectivityView({Key? key}) : super(key: key);
+  ConnectivityView({Key? key}) : super(key: key);
+  @override
+  final controller = Get.put(ConnectivityController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,7 +1,8 @@
-import 'package:daraz_clone_app/app/utils/assets_manager.dart';
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
-import 'package:daraz_clone_app/app/utils/font_manager.dart';
-import 'package:daraz_clone_app/app/utils/style_manager.dart';
+import 'package:daraz_clone_app/app/routes/app_pages.dart';
+import 'package:daraz_clone_app/app/utils/constant/assets_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/color_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/font_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/style_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -86,7 +87,11 @@ class AccountView extends GetView<AccountController> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Routes.SETTINGS);
+                // Get.to(() => SettingsView(),
+                //     transition: Transition.rightToLeft);
+              },
               icon: Image.asset(
                 IconAssets.settings,
                 width: 20.w,

@@ -1,21 +1,29 @@
- 
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:daraz_clone_app/app/data/models/products.dart';
+import 'package:daraz_clone_app/app/utils/flavor/flavor_config.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ProductServices {
   final Dio dio = Dio();
-  Future<List<dynamic>> getProducts() async {
+  Future getProducts() async {
     try {
-      var response = await dio.get('https://fakestoreapi.com/products');
-      // log("Response=========>>>>$response");
+      var response = await dio.get(FlavorConfig.baseUrl);
+      log("Getting product:::${response.statusCode}:::::${response.data}");
       if (response.statusCode == 200) {
-        return response.data;
+        final List<dynamic> jsonData = response.data;
+        return jsonData
+            .map((productData) => Products.fromMap(productData))
+            .toList();
+        // return response;
       } else {
-        return [];
+        return null;
       }
     } catch (e) {
       debugPrint("Error getting product=> $e");
-      return [];
+      return false;
     }
   }
 }

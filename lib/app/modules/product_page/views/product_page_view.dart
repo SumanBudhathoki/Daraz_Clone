@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:daraz_clone_app/app/utils/assets_manager.dart';
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
-import 'package:daraz_clone_app/app/utils/font_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/assets_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/color_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/font_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../utils/style_manager.dart';
+import '../../../utils/constant/style_manager.dart';
 import '../controllers/product_page_controller.dart';
 
 class ProductPageView extends GetView<ProductPageController> {
@@ -120,7 +120,7 @@ class ProductPageView extends GetView<ProductPageController> {
                   width: Get.width,
                   height: 400.h,
                   child:
-                      CachedNetworkImage(imageUrl: controller.product!.image!),
+                      CachedNetworkImage(imageUrl: controller.product!.image),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -132,7 +132,7 @@ class ProductPageView extends GetView<ProductPageController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              controller.product!.title!,
+                              controller.product!.title,
                               style:
                                   getProductTitleStyle(fontSize: FontSize.s18),
                             ),
@@ -154,7 +154,7 @@ class ProductPageView extends GetView<ProductPageController> {
                                     ),
                                     TextSpan(
                                       text:
-                                          "Rs ${controller.product!.price! + 92}",
+                                          "Rs ${controller.product!.price + 92}",
                                       style: TextStyle(
                                           color: ColorManager.primaryGrey,
                                           fontSize: FontSize.s14,
@@ -216,7 +216,7 @@ class ProductPageView extends GetView<ProductPageController> {
                                     size: 20,
                                   ),
                                   Text(
-                                    "${controller.product!.rating!.rate}/5(${controller.product!.rating!.count})\t",
+                                    "${controller.product!.rating.rate}/5(${controller.product!.rating.count})\t",
                                     style: TextStyle(fontSize: FontSize.s16),
                                   ),
                                   Icon(
@@ -370,7 +370,7 @@ class ProductPageView extends GetView<ProductPageController> {
                           ),
                           const Divider(),
                           Text(
-                            controller.product!.description!,
+                            controller.product!.description,
                             style: TextStyle(fontSize: FontSize.s14),
                           )
                         ],

@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
-import '../../../utils/color_manager.dart';
-import '../../../utils/font_manager.dart';
-import '../../../utils/value_manager.dart';
+import '../../../utils/constant/color_manager.dart';
+import '../../../utils/constant/font_manager.dart';
+import '../../../utils/constant/value_manager.dart';
 import '../../../widgets/gradient_button.dart';
 
 class OtpView extends StatelessWidget {
@@ -64,6 +64,7 @@ class OtpView extends StatelessWidget {
                 )),
             GradientButton(
               text: 'Next',
+              loading: controller.loading.value,
               onTap: () async {
                 await loginController.signInWithPhoneNumber(verificationId);
                 Get.offAllNamed("/");

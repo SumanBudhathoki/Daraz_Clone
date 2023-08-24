@@ -1,5 +1,5 @@
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
-import 'package:daraz_clone_app/app/utils/font_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/color_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/font_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

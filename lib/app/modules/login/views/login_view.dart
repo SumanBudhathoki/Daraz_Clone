@@ -4,17 +4,17 @@ import 'package:daraz_clone_app/app/modules/home/controllers/home_controller.dar
 import 'package:daraz_clone_app/app/modules/home/views/home_view.dart';
 import 'package:daraz_clone_app/app/modules/login/views/login_view_withphn.dart';
 import 'package:daraz_clone_app/app/modules/login/views/login_with_email_view.dart';
-import 'package:daraz_clone_app/app/utils/assets_manager.dart';
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
-import 'package:daraz_clone_app/app/utils/font_manager.dart';
-import 'package:daraz_clone_app/app/utils/value_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/assets_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/color_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/font_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/value_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 
-import '../../../utils/style_manager.dart';
+import '../../../utils/constant/style_manager.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {

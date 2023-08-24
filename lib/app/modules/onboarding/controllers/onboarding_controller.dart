@@ -1,5 +1,5 @@
 import 'package:daraz_clone_app/app/data/models/onboarding.dart';
-import 'package:daraz_clone_app/app/utils/assets_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/assets_manager.dart';
 import 'package:get/get.dart';
 import '../../../database/main_storage.dart';
 import '../../../routes/app_pages.dart';

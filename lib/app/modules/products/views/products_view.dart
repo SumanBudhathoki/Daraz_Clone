@@ -1,11 +1,11 @@
 import 'package:daraz_clone_app/app/modules/product_page/views/product_page_view.dart';
 import 'package:daraz_clone_app/app/modules/products/views/widgets/single_product.dart';
-import 'package:daraz_clone_app/app/utils/font_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/font_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../utils/style_manager.dart';
+import '../../../utils/constant/style_manager.dart';
 import '../controllers/products_controller.dart';
 
 class ProductsView extends GetView<ProductsController> {
@@ -37,12 +37,11 @@ class ProductsView extends GetView<ProductsController> {
                       mainAxisSpacing: 10.0),
                   itemBuilder: (context, index) {
                     return SingleProductView(
-                      imageUrl: controller.productList[index]["image"],
-                      productTitle: controller.productList[index]["title"],
-                      price: controller.productList[index]["price"],
-                      rating: controller.productList[index]["rating"]["rate"],
-                      ratingCount: controller.productList[index]["rating"]
-                          ["count"],
+                      imageUrl: controller.productList[index].image,
+                      productTitle: controller.productList[index].title,
+                      price: controller.productList[index].price,
+                      rating: controller.productList[index].rating.rate,
+                      ratingCount: controller.productList[index].rating.count,
                       onTap: () {
                         Get.to(
                           () => ProductPageView(),

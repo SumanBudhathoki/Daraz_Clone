@@ -1,3 +1,4 @@
+import 'package:daraz_clone_app/app/utils/flavor/flavor_config.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +9,7 @@ import 'app/modules/connectivity/bindings/connectivity_binding.dart';
 import 'app/routes/app_pages.dart';
 
 void main() async {
+  FlavorConfig.appFlavor = Flavor.development;
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await GetStorage.init('App');

@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../utils/color_manager.dart';
-import '../utils/font_manager.dart';
+import '../utils/constant/color_manager.dart';
+import '../utils/constant/font_manager.dart';
 
 class GradientButton extends StatelessWidget {
+  bool loading;
   final LoginController controller = Get.put(LoginController());
   final String text;
   double? width = Get.width;
@@ -18,6 +19,7 @@ class GradientButton extends StatelessWidget {
       required this.text,
       required this.onTap,
       required this.gradient,
+      required this.loading,
       this.width,
       this.height});
 
@@ -46,12 +48,14 @@ class GradientButton extends StatelessWidget {
                   ),
                 )
               : Center(
-                  child: Text(
-                    text,
-                    style: TextStyle(
-                        color: ColorManager.primaryWhite,
-                        fontSize: FontSize.s18),
-                  ),
+                  child: loading
+                      ? const CircularProgressIndicator()
+                      : Text(
+                          text,
+                          style: TextStyle(
+                              color: ColorManager.primaryWhite,
+                              fontSize: FontSize.s18),
+                        ),
                 );
         }),
       ),

@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
-import 'package:daraz_clone_app/app/utils/font_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/color_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/font_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../utils/style_manager.dart';
+import '../../../../utils/constant/style_manager.dart';
 
 class SingleProductView extends StatelessWidget {
   final String imageUrl;

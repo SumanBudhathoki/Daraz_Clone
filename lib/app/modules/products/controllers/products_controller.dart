@@ -1,11 +1,13 @@
 import 'dart:developer';
 
+import 'package:daraz_clone_app/app/data/models/products.dart';
 import 'package:daraz_clone_app/app/data/providers/product_services.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductsController extends GetxController {
   var isLoading = true.obs;
-  var productList = [].obs;
+  RxList<Products> productList = <Products>[].obs;
   @override
   void onInit() {
     fetchApiData();
@@ -15,11 +17,14 @@ class ProductsController extends GetxController {
   void fetchApiData() async {
     isLoading.value = true;
     var products = await ProductServices().getProducts();
-    log('Products---------->$products');
-    if (products.isNotEmpty) {
-      productList.value = products;
+
+    if (products == null || products == false) {
+      Get.showSnackbar(const GetSnackBar(
+        title: 'There has been some problem loading data.',
+        icon: Icon(Icons.dangerous_outlined),
+      ));
     } else {
-      // handle error
+      productList.value = products;
     }
     isLoading.value = false;
   }

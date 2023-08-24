@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../middlewares/auth_middleware.dart';
 import '../middlewares/onboarding_middleware.dart';
 import '../modules/account/bindings/account_binding.dart';
@@ -25,6 +26,8 @@ import '../modules/product_page/bindings/product_page_binding.dart';
 import '../modules/product_page/views/product_page_view.dart';
 import '../modules/products/bindings/products_binding.dart';
 import '../modules/products/views/products_view.dart';
+import '../modules/settings/bindings/settings_binding.dart';
+import '../modules/settings/views/settings_view.dart';
 import '../modules/shop/bindings/shop_binding.dart';
 import '../modules/shop/views/shop_view.dart';
 
@@ -74,7 +77,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CONNECTIVITY,
-      page: () => const ConnectivityView(),
+      page: () => ConnectivityView(),
       binding: ConnectivityBinding(),
     ),
     GetPage(
@@ -101,6 +104,11 @@ class AppPages {
       name: _Paths.CHECKOUT,
       page: () => const CheckoutView(),
       binding: CheckoutBinding(),
+    ),
+    GetPage(
+      name: _Paths.SETTINGS,
+      page: () => SettingsView(),
+      binding: SettingsBinding(),
     ),
   ];
 }

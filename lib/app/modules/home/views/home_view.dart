@@ -10,7 +10,7 @@ import 'package:daraz_clone_app/app/modules/messages/views/messages_view.dart';
 import 'package:daraz_clone_app/app/modules/products/views/products_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../utils/color_manager.dart';
+import '../../../utils/constant/color_manager.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {

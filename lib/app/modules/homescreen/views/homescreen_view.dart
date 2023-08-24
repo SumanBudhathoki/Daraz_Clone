@@ -3,18 +3,20 @@ import 'package:daraz_clone_app/app/modules/homescreen/views/widgets/category.da
 import 'package:daraz_clone_app/app/modules/homescreen/views/widgets/dot_indicator.dart';
 import 'package:daraz_clone_app/app/modules/login/controllers/login_controller.dart';
 import 'package:daraz_clone_app/app/modules/products/views/products_view.dart';
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../utils/assets_manager.dart';
-import '../../../utils/font_manager.dart';
-import '../../../utils/style_manager.dart';
+import '../../../utils/constant/assets_manager.dart';
+import '../../../utils/constant/font_manager.dart';
+import '../../../utils/constant/style_manager.dart';
 import '../controllers/homescreen_controller.dart';
 
 class HomescreenView extends GetView<HomescreenController> {
+  @override
   final HomescreenController controller = Get.put(HomescreenController());
+
   final LoginController logincontroller = Get.put(LoginController());
   final expandedHeight = 70.h;
   HomescreenView({super.key});
@@ -226,6 +228,7 @@ class HomescreenView extends GetView<HomescreenController> {
   }
 }
 
+// For you products
 Widget _forYouProducts() {
   return SliverToBoxAdapter(
     child: ProductsView(),

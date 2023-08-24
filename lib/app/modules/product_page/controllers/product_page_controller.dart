@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import '../../../data/models/products.dart';
 
 class ProductPageController extends GetxController {
-  Product? product;
+  Products? product;
 
   @override
   void onInit() {
-    product = Product.fromJson(Get.arguments["product"]);
+    product = Get.arguments["product"];
     super.onInit();
   }
 }

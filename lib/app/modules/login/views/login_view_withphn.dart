@@ -1,12 +1,12 @@
 import 'package:daraz_clone_app/app/widgets/gradient_button.dart';
-import 'package:daraz_clone_app/app/utils/color_manager.dart';
-import 'package:daraz_clone_app/app/utils/font_manager.dart';
-import 'package:daraz_clone_app/app/utils/value_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/color_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/font_manager.dart';
+import 'package:daraz_clone_app/app/utils/constant/value_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../utils/assets_manager.dart';
+import '../../../utils/constant/assets_manager.dart';
 import '../controllers/login_controller.dart';
 
 class LoginViewWithPhn extends StatelessWidget {
@@ -84,6 +84,7 @@ class LoginViewWithPhn extends StatelessWidget {
               ),
               const Spacer(),
               GradientButton(
+                loading: controller.loading.value,
                 text: 'Next',
                 onTap: () {
                   controller.verifyPhoneNumber();

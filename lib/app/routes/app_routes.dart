@@ -20,6 +20,7 @@ abstract class Routes {
   static const CHAT = _Paths.CHAT;
   static const CHECKOUT = _Paths.CHECKOUT;
   static const LOGGED_ACCOUNT = _Paths.LOGGED_ACCOUNT;
+  static const SETTINGS = _Paths.SETTINGS;
 }
 
 abstract class _Paths {
@@ -41,4 +42,5 @@ abstract class _Paths {
   static const CHAT = '/chat';
   static const CHECKOUT = '/checkout';
   static const LOGGED_ACCOUNT = '/logged-account';
+  static const SETTINGS = '/settings';
 }
